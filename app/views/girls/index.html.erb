@@ -1,0 +1,8 @@
+<% @girls.each do |girl| %>
+<h2><%= girl.name %></h2>
+<p><%= girl.address %></p>
+<%= link_to girl.name, girl_path(girl) %>
+
+<% end %>
+
+

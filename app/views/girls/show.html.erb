@@ -1,0 +1,7 @@
+<h2><%= @girl.name %></h2>
+<p><%= @girl.address %></p>
+<%= if @girl.user_id == current_user.id %>
+<%= link_to "Delete", girl_path(girl),
+method: :delete,
+data: { confirm: "Are you sure?" } %>
+<% end %> 
