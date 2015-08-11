@@ -1,0 +1,2557 @@
+<!DOCTYPE html>
+<!-- saved from url=(0080)http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant -->
+<html itemscope="" itemtype="http://schema.org/QAPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Ruby on Rails. Uninitialized constant - Stack Overflow</title>
+    <link rel="shortcut icon" href="http://cdn.sstatic.net/stackoverflow/img/favicon.ico?v=6cd6089ee7f6">
+    <link rel="apple-touch-icon image_src" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="http://stackoverflow.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com">
+    <meta property="og:type" content="website">
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=ea71a5211a91&amp;a">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Ruby on Rails. Uninitialized constant">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="This is odd, but:
+
+Uploader class (app/uploaders):
+
+class ImageUploader &amp;lt; CarrierWave::Uploader::Base
+  include CarrierWave::RMagick
+
+  # ....
+
+  version :thumb, from_version: :preview do
+    pr...">
+    <meta property="og:url" content="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant">
+    <link rel="canonical" href="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/Ruby on Rails. Uninitialized constant - Stack Overflow.html">
+
+    
+    
+    <script type="text/javascript" async="" src="http://engine.adzerk.net/ados?t=1439300284360&request={%22Placements%22:[{%22A%22:22,%22S%22:8277,%22D%22:%22adzerk1559365593%22,%22AT%22:4,%22Z%22:43},{%22A%22:22,%22S%22:8277,%22D%22:%22adzerk665174466%22,%22AT%22:4,%22Z%22:44},{%22A%22:22,%22S%22:8277,%22D%22:%22adzerk469968177%22,%22ATA%22:[17,2221],%22Z%22:45}],%22Keywords%22:%22ruby-on-rails%2Cruby%2Ccarrierwave%2Cx-user-registered%22,%22Referrer%22:%22https%3A%2F%2Fwww.google.be%2F%22,%22IsAsync%22:true}"></script><script async="" src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/quant.js"></script><script async="" src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/beacon.js"></script><script async="" src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/analytics.js"></script><script type="text/javascript" async="" src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/ados.js"></script><script src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/jquery.min.js"></script><style type="text/css"></style>
+    <script src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/stub.en.js"></script>
+    <link rel="stylesheet" type="text/css" href="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/all.css">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;Ruby on Rails. Uninitialized constant&#39;" href="http://stackoverflow.com/feeds/question/21041653">
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({votesCast:[],autoShowCommentHelp:true,showAnswerHelp:true,totalCommentCount:5,shownCommentCount:5,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:21041653});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '21041653');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1439300283,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"globalAuthDisabled":true,"nonAsciiTags":true,"enableSocialMediaInSharePopup":true},"timingsGuid":"8051e2c6-ffed-4ef0-a86c-f519846943da","timingsInfo":"OQVDKNWV/UKjKoublh4bu9r7nEUHsUcyHgbRaaPnX2bp51NhUs7exEAgwi2Xx8t/q1fIUb7+e6skLHGQOlRKQIPk7Dluie1bBHVqr3ZrEA+WpucTnvAq4uY9pdseeDfGdf6pe/mrPAmkbTYrGyQokbeM4i/73uhyw54vl+/JoIeCVLcuQPHuT5Ozd6mCCbTm17HB+oGnWSZ33vF2cFXQvQ3RHNE9qra7VVo3N4IgDiWc/yZMNZwpkR6wQt3/EROL8DkQSvXb02R4J3rlIzpCYvtOiD4IbXEUT3pihtltVLRLARcgUB6ItyqW/0poPel/","user":{"fkey":"ecca936fe8e0511cbaa437720c629244","isRegistered":true,"userType":3,"userId":4875218,"accountId":6270946,"gravatar":"<div class=\"gravatar-wrapper-32\"><img src=\"https://www.gravatar.com/avatar/cb2fc4b34916954d514cbc6695f89825?s=32&amp;d=identicon&amp;r=PG&amp;f=1\" alt=\"\" width=\"32\" height=\"32\"></div>","profileUrl":"http://stackoverflow.com/users/4875218/pldk"}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"1b8084b3e46e","js/moderator.en.js":"9761e33aba34","js/full-anon.en.js":"088c1af1624d","js/full.en.js":"f6074df299ce","js/wmd.en.js":"8c9e37be25ba","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"92dedb4cdb26","js/help.en.js":"79fd6664be3b","js/tageditor.en.js":"c84618a71b61","js/tageditornew.en.js":"d67e544827e1","js/inline-tag-editing.en.js":"de80429b1816","js/revisions.en.js":"9e897f24d78d","js/review.en.js":"5f9a8e64eec1","js/tagsuggestions.en.js":"bb4721d888d2","js/post-validation.en.js":"a8e5d506195c","js/explore-qlist.en.js":"f3ed891c20d6","js/events.en.js":"4349459ce1b7","js/keyboard-shortcuts.en.js":"d1eda28e5fd3","js/external-editor.en.js":"ad8cbd77a702","js/external-editor.en.js":"ad8cbd77a702","js/snippet-javascript.en.js":"e21fcb06cc53","js/snippet-javascript-codemirror.en.js":"bbdd4d8f46a8"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+    
+    
+<script async="" src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/full.en.js"></script><meta name="chromesniffer" id="chromesniffer_meta" content="{&quot;Quantcast&quot;:-1,&quot;jQuery&quot;:&quot;1.7.1&quot;}"><script type="text/javascript" src="chrome-extension://homgcnaoacgigpkkljjjekpignblkeae/detector.js"></script><script async="" src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/snippet-javascript.en.js"></script><script async="" src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/post-validation.en.js"></script><script async="" src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/prettify-full.en.js"></script><script async="" src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/external-editor.en.js"></script><script async="" src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/wmd.en.js"></script><script type="text/javascript" src="http://static.adzerk.net/Extensions/adFeedback.js"></script><link rel="stylesheet" href="http://static.adzerk.net/Extensions/adFeedback.css"><style type="text/css"> .wmd-snippet-button span { background-position: 0 0; } .wmd-snippet-button:hover span { background-position: 0 -40px; }</style><link type="text/css" rel="stylesheet" href="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/jobs.min.css"></head>
+<body class="question-page new-topbar" cz-shortcut-listen="true">
+    <noscript>&lt;div id="noscript-padding"&gt;&lt;/div&gt;</noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="http://stackoverflow.com/">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+            <a href="http://chat.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+                    <a href="http://blog.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:7 })">blog</a>
+                    <a href="http://stackoverflow.com/users/logout" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:8 })">log out</a>
+    </div>
+
+
+
+
+    <a href="http://stackoverflow.com/" class="current-site-link site-link js-gps-track" data-id="1" data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com/" class="site-link js-gps-track" data-id="552" data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track" href="http://careers.stackoverflow.com/?utm_source=stackoverflow.com&utm_medium=site-ui&utm_campaign=multicollider" data-gps-track="site_switcher.click({ item_type:9 })">
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+                <a href="http://stackexchange.com/users/6270946/?tab=accounts">your communities</a>
+        </h3>
+            
+            <a href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#" id="edit-pinned-sites">edit</a>
+            <a href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#" id="cancel-pinned-sites" style="display: none;">cancel</a>
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <ul class="my-sites">
+                    <li>
+                        
+
+
+
+    <a href="http://stackoverflow.com/" class="site-link js-gps-track" data-id="1" data-gps-track="
+            site.switch({ target_site:1, item_type:3 }),
+        site_switcher.click({ item_type:1 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+            <span class="rep-score">1</span>
+    </a>
+
+                    </li>
+            </ul>
+                <div class="pinned-site-editor-container" style="display: none;">
+                    <input id="js-site-search-txt" type="text" class="site-filter-input" value="" placeholder="Add a Stack Exchange community">
+                    <input type="submit" id="pin-site-btn" value="Add" disabled="disabled">
+                    <ul class="js-found-sites found-sites"></ul>
+                    <ul class="pinned-site-list sortable" data-custom-list="False">
+                    </ul>
+                    <input type="submit" value="Save" id="save-pinned-sites-btn" disabled="disabled">
+                    <a href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#" id="reset-pinned-sites">reset to default list</a>
+                </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="http://stackexchange.com/sites">more stack exchange communities</a></h3>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="http://stackexchange.com/" class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 149 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+                <a href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#" class="topbar-icon icon-inbox yes-hover js-inbox-button" title="Recent inbox messages">
+                    <span class="hidden-text">Inbox</span>
+                    <span class="unread-count" style="display:none"></span>
+                </a>
+                <a href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#" class="topbar-icon icon-achievements yes-hover js-achievements-button icon-achievements-unread" data-unread-class="icon-achievements-unread" title="You have new achievements">
+                    <span class="hidden-text">Reputation and Badges</span>
+                    <span class="unread-count" style="display:none">
+                        
+                    </span>
+                </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <a href="http://stackoverflow.com/users/4875218/pldk" class="profile-me js-gps-track" data-gps-track="profile_summary.click()">
+                    
+                    <div class="gravatar-wrapper-24" title="pldk"><img src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/cb2fc4b34916954d514cbc6695f89825" alt="" width="24" height="24" class="avatar-me js-avatar-me"></div>
+
+                    <div class="links-container topbar-flair">
+
+                        <span class="reputation" title="your reputation: 1">
+                            1
+                        </span>
+<span title="1 bronze badge"><span class="badge3"></span><span class="badgecount">1</span></span>                    </div>
+                </a>
+                <div class="links-container">
+                    <span class="topbar-menu-links">
+
+
+
+
+    <a href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="http://stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="http://stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="http://meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="http://stackoverflow.com/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://stackoverflow.com/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="http://stackoverflow.com/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="http://stackoverflow.com/tags">Tags</a></li>
+                        <li><a id="nav-users" href="http://stackoverflow.com/users">Users</a></li>
+                        <li><a id="nav-badges" href="http://stackoverflow.com/help/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="http://stackoverflow.com/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion" href="http://stackoverflow.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+			<div id="question-header">
+                <h1 itemprop="name"><a href="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/Ruby on Rails. Uninitialized constant - Stack Overflow.html" class="question-hyperlink">Ruby on Rails. Uninitialized constant</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="21041653" id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1559365593",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1559365593">
+            <iframe id="ados_frame_adzerk1559365593_636842" frameborder="0" scrolling="no" height="90" width="728"></iframe><img height="0" width="0" border="0" style="position: absolute; display: none !important; visibility: hidden !important; opacity: 0 !important; background-position: 0px 0px;" src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/i.gif"></div>    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="21041653">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>1</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>This is odd, but:</p>
+
+<p>Uploader class (app/uploaders):</p>
+
+<pre class="lang-rb prettyprint prettyprinted"><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">ImageUploader</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln"> </span><span class="typ">CarrierWave</span><span class="pun">::</span><span class="typ">Uploader</span><span class="pun">::</span><span class="typ">Base</span><span class="pln">
+  include </span><span class="typ">CarrierWave</span><span class="pun">::</span><span class="typ">RMagick</span><span class="pln">
+
+  </span><span class="com"># ....</span><span class="pln">
+
+  version </span><span class="pun">:</span><span class="pln">thumb</span><span class="pun">,</span><span class="pln"> from_version</span><span class="pun">:</span><span class="pln"> </span><span class="pun">:</span><span class="pln">preview </span><span class="kwd">do</span><span class="pln">
+    process resize_to_limit</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="typ">Image</span><span class="pun">::</span><span class="pln">THUMB_WIDTH</span><span class="pun">]</span><span class="pln">
+  </span><span class="kwd">end</span></code></pre>
+
+<p>Image class (app/models):</p>
+
+<pre class="lang-rb prettyprint prettyprinted"><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">Image</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln"> </span><span class="typ">ActiveRecord</span><span class="pun">::</span><span class="typ">Base</span><span class="pln">
+  include </span><span class="typ">Rails</span><span class="pun">.</span><span class="pln">application</span><span class="pun">.</span><span class="pln">routes</span><span class="pun">.</span><span class="pln">url_helpers
+  mount_uploader </span><span class="pun">:</span><span class="pln">image</span><span class="pun">,</span><span class="pln"> </span><span class="typ">ImageUploader</span><span class="pln">
+
+  THUMB_WIDTH </span><span class="pun">=</span><span class="pln"> </span><span class="lit">220</span><span class="pln">
+  PREVIEW_WIDTH </span><span class="pun">=</span><span class="pln"> </span><span class="lit">460</span><span class="pln">
+  MAX_WIDTH </span><span class="pun">=</span><span class="pln"> </span><span class="lit">960</span></code></pre>
+
+<p>The application says:</p>
+
+<p><code>uninitialized constant Image::THUMB_WIDTH</code></p>
+
+<pre class="lang-rb prettyprint prettyprinted"><code><span class="pln">  version </span><span class="pun">:</span><span class="pln">thumb</span><span class="pun">,</span><span class="pln"> from_version</span><span class="pun">:</span><span class="pln"> </span><span class="pun">:</span><span class="pln">preview </span><span class="kwd">do</span><span class="pln">
+    process resize_to_limit</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="typ">Image</span><span class="pun">::</span><span class="pln">THUMB_WIDTH</span><span class="pun">]</span><span class="pln"> </span><span class="com">#&lt;&lt;&lt;----</span><span class="pln">
+  </span><span class="kwd">end</span><span class="pln">
+
+  version </span><span class="pun">:</span><span class="pln">preview</span><span class="pun">,</span><span class="pln"> from_version</span><span class="pun">:</span><span class="pln"> </span><span class="pun">:</span><span class="pln">fullsize </span><span class="kwd">do</span></code></pre>
+
+<p>What's wrong?</p>
+
+<p>UPDATE:</p>
+
+<p>Agis pointed out the reason.</p>
+
+<p>Bounty for the best solution to this problem will be applied in 2 days. I don't like code separation, e.g. making a new class holding all the constants for the Image class in initializers etc. This solutions is bad because it it brings inconsistency and code fragmentation.</p>
+    </div>
+    <div class="post-taglist">
+        <a href="http://stackoverflow.com/questions/tagged/ruby-on-rails" class="post-tag js-gps-track" title="show questions tagged &#39;ruby-on-rails&#39;" rel="tag">ruby-on-rails</a> <a href="http://stackoverflow.com/questions/tagged/ruby" class="post-tag js-gps-track" title="show questions tagged &#39;ruby&#39;" rel="tag">ruby</a> <a href="http://stackoverflow.com/questions/tagged/carrierwave" class="post-tag js-gps-track" title="show questions tagged &#39;carrierwave&#39;" rel="tag">carrierwave</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/q/21041653/4875218" title="short permalink to this question" class="short-link" id="link-post-21041653">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/21041653/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/21041653/revisions" title="show all edits to this post">edited <span title="2014-01-10 11:45:49Z" class="relativetime">Jan 10 '14 at 11:45</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info user-hover">
+    <div class="user-action-time">
+        asked <span title="2014-01-10 10:19:13Z" class="relativetime">Jan 10 '14 at 10:19</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/485676/nemoden"><div class="gravatar-wrapper-32"><img src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/6b9bd46ef45b1c9e0c7cbe422c0326e5" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/485676/nemoden">Nemoden</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">4,637</span><span title="20 silver badges"><span class="badge2"></span><span class="badgecount">20</span></span><span title="45 bronze badges"><span class="badge3"></span><span class="badgecount">45</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-21041653" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-31636498" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">try this <code>version :thumb, from_version: :preview { process resize_to_limit: [Image::THUMB_WIDTH] }</code> and say answer =)</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/446267/%d0%9c%d0%b0%d0%bb%d1%8a-%d0%a1%d0%ba%d1%80%d1%8b%d0%bb%d0%b5%d0%b2%d1%8a" title="7608 reputation" class="comment-user">Малъ Скрылевъ</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#comment31636498_21041653"><span title="2014-01-10 11:34:40Z" class="relativetime-clean">Jan 10 '14 at 11:34</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 2 times"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-31636700" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy"><code>unexpected '{', expecting keyword_end</code></span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/485676/nemoden" title="4637 reputation" class="comment-user owner">Nemoden</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#comment31636700_21041653"><span title="2014-01-10 11:40:44Z" class="relativetime-clean">Jan 10 '14 at 11:40</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-31636896" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">try fixed <code>version( :thumb, from_version: :preview ) { process resize_to_limit: [Image::THUMB_WIDTH] }</code> and say answer =)</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/446267/%d0%9c%d0%b0%d0%bb%d1%8a-%d0%a1%d0%ba%d1%80%d1%8b%d0%bb%d0%b5%d0%b2%d1%8a" title="7608 reputation" class="comment-user">Малъ Скрылевъ</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#comment31636896_21041653"><span title="2014-01-10 11:46:59Z" class="relativetime-clean">Jan 10 '14 at 11:46</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-31869184" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Put tht definition of <code>THUMB_WIDTH = 220</code> before the mounting <code>mount_uploader :image, ImageUploader</code>, we'll see that it be.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/446267/%d0%9c%d0%b0%d0%bb%d1%8a-%d0%a1%d0%ba%d1%80%d1%8b%d0%bb%d0%b5%d0%b2%d1%8a" title="7608 reputation" class="comment-user">Малъ Скрылевъ</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#comment31869184_21041653"><span title="2014-01-16 18:32:34Z" class="relativetime-clean">Jan 16 '14 at 18:32</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 4 times"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-41949814" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">At the point you call mount_uploader the constant is not defined yet. Moving the constant definition before the mount call will solve the issue.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/448934/pascal-betz" title="654 reputation" class="comment-user">pascal betz</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#comment41949814_21041653"><span title="2014-10-31 12:59:49Z" class="relativetime-clean">Oct 31 '14 at 12:59</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-21041653" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#" onclick=""></a>
+        </div>         
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								9 Answers
+                                <span style="display:none;" itemprop="answerCount">9</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">active</a>
+        <a href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">oldest</a>
+        <a class="youarehere" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="21221484"></a>
+<div id="answer-21221484" class="answer accepted-answer" data-answerid="21221484" itemscope="" itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="21221484">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">6</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+<div class="bounty-award-container"><span class="bounty-award" title="This answer has been awarded bounties worth 100 reputation by Nemoden">+100</span></div>
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<h2>A general answer</h2>
+
+<p>You have a chicken or egg case as far as rails autoloader is concerned, the "rails way" of solving this in a general sense would be to refactor the metacode so that the class names get passed as string values rather than classes, for example:</p>
+
+<pre class="lang-rb prettyprint prettyprinted"><code><span class="pln">belongs_to </span><span class="pun">:</span><span class="pln">manager</span><span class="pun">,</span><span class="pln"> class_name</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Employee"</span></code></pre>
+
+<p><code>belongs_to</code> will call <code>constantize</code> on <code>class_name</code> hopefully at a time when all classes have been loaded so the chicken and egg issue is circumvented "the rails way".</p>
+
+<p>What <strong>@Stoic</strong> suggested is essentially a variation of this theme of circumventing the evaluation of <code>image.rb</code> at <code>image_uploader.rb</code> load time:</p>
+
+<pre class="lang-rb prettyprint prettyprinted"><code><span class="pln">model</span><span class="pun">.</span><span class="kwd">class</span><span class="pun">.</span><span class="pln">const_get</span><span class="pun">(</span><span class="str">"THUMB_WIDTH"</span><span class="pun">)</span></code></pre>
+
+<p>could also have been phrased as:</p>
+
+<pre class="lang-rb prettyprint prettyprinted"><code><span class="str">'Image'</span><span class="pun">.</span><span class="pln">constantize</span><span class="pun">.</span><span class="pln">const_get</span><span class="pun">(</span><span class="str">"THUMB_WIDTH"</span><span class="pun">)</span></code></pre>
+
+<p>and result is the same and the general lesson to take from this is: <strong>avoid using another class name literals in class load-time code</strong> or in other words <code>belongs_to :manager, class_name: "Employee"</code> is good and <code>belongs_to :manager, class_name: Employee</code> would be bad.</p>
+
+<p>It's not pretty, but its probably the most elegant universal way to avoid these headaches</p>
+
+<hr>
+
+<h2>A problem specific answer</h2>
+
+<p>A different way of looking at the problem is that thumbnail icon width is actually <strong>a concern of the uploader</strong> and not of the model and that you're in fact seeing a fringe case of inappropriate intimacy code smell (<a href="http://www.codinghorror.com/blog/2006/05/code-smells.html" rel="nofollow">http://www.codinghorror.com/blog/2006/05/code-smells.html</a>).</p>
+
+<blockquote>
+  <p>Watch out for classes that spend too much time together, or classes that interface in inappropriate ways. Classes should know as little as possible about each other.</p>
+</blockquote>
+
+<p>So, if you are of this school of thought (I'm leaning in this direction) the solution would be to make <code>THUMB_WIDTH</code> a constant of the <code>ImageUploader</code> class and the problem goes away.</p>
+
+<p>It's generally a good idea to separate different domain concerns out of the models anyway as the models like to get bloated and unmanageable - you could view the uploader class as a service class of your model designed to extract a particular domain problem much in the same way value objects, form objects etc get handled in <a href="http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/" rel="nofollow">http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/</a></p>
+
+<hr>
+
+<p>Plan C would be to switch places of <code>config.autoload_paths</code> in your <code>application.rb</code> and cross fingers :)</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/21221484/4875218" title="short permalink to this answer" class="short-link" id="link-post-21221484">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/21221484/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/21221484/revisions" title="show all edits to this post">edited <span title="2014-12-11 04:39:01Z" class="relativetime">Dec 11 '14 at 4:39</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/4271967/jordan-arnesen"><div class="gravatar-wrapper-32"><img src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/a5729849cea0269007cf7a43b71af92d" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/4271967/jordan-arnesen">Jordan Arnesen</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">5</span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-01-19 19:25:20Z" class="relativetime">Jan 19 '14 at 19:25</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1983072/bbozo"><div class="gravatar-wrapper-32"><img src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/974c4e106b996fff51c25171e439b7b8" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1983072/bbozo">bbozo</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">2,290</span><span title="5 silver badges"><span class="badge2"></span><span class="badgecount">5</span></span><span title="23 bronze badges"><span class="badge3"></span><span class="badgecount">23</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-21221484" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-31968632" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">A very thorough answer, a lot of useful information, good references. Thanks!</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/485676/nemoden" title="4637 reputation" class="comment-user owner">Nemoden</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#comment31968632_21221484"><span title="2014-01-20 01:49:21Z" class="relativetime-clean">Jan 20 '14 at 1:49</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-21221484" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk665174466",4).setZone(44); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk665174466"><a href="http://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6NCwiYnQiOjAsImNtIjoxODc5NTQsImNoIjoxMTc4LCJjayI6e30sImNyIjo2NjQ0MjYsImRpIjoiYzA4N2ExN2VjMWY5NGYzZDk5YWQzMGZiOTZhMGI3MjIiLCJkbSI6MSwiZmMiOjY4NjI4NSwiZmwiOjQxNTQ4NSwiaXAiOiIxMDkuMTI5LjIyOC4xMzgiLCJrdyI6InJ1Ynktb24tcmFpbHMscnVieSxjYXJyaWVyd2F2ZSx4LXVzZXItcmVnaXN0ZXJlZCIsIm53IjoyMiwicGMiOjAsInByIjoxNjA0LCJydCI6MSwicmYiOiJodHRwczovL3d3dy5nb29nbGUuYmUvIiwic3QiOjgyNzcsInVrIjoidWUxLTI2MjIzOTllNTAyNTQ3ZGFhOGM2MzNmZjczM2Y1ZjBkIiwiem4iOjQ0LCJ0cyI6MTQzOTMwMDI4NDQwOCwiYmYiOnRydWUsInBuIjoiYWR6ZXJrNjY1MTc0NDY2IiwidXIiOiJodHRwOi8vd3d3LmZhY2Vib29rLmNvbS9zdGFja2V4Y2hhbmdlIn0&s=v1AjAOiVJxNhnhvBF80TJZWNrxM" rel="nofollow" target="_blank" title=""><img src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/08eaa5c81e4346a58bf2cc7e601baf4d.png" title="" alt="" border="0" width="0" height="0" style="display: none !important; visibility: hidden !important; opacity: 0 !important; background-position: 0px 0px;"></a><img height="0" width="0" border="0" style="position: absolute; display: none !important; visibility: hidden !important; opacity: 0 !important; background-position: 0px 0px;" src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/i(1).gif"></div>
+  
+<a name="21042109"></a>
+<div id="answer-21042109" class="answer" data-answerid="21042109" itemscope="" itemtype="http://schema.org/Answer">
+
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="21042109">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>This happens because the code for the <code>ImageUploader</code> class is evaluated <em>before</em> the one for the <code>Image</code> class. So at the point where <code>Image::THUMB_WIDTH</code> is evaluated, the constant lookup happens and searches for the <code>Image</code> constant but does not find it since the relevant file is not loaded yet.</p>
+
+<p>You can fix this by adding this definition at the top of  your <code>ImageUploader</code> file:</p>
+
+<pre class="lang-rb prettyprint prettyprinted"><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">Image</span><span class="pun">;</span><span class="pln"> </span><span class="kwd">end</span></code></pre>
+
+<p>You could also do the same but in an initializer instead (ex. <code>config/initializers/image.rb</code>). </p>
+
+<p>This would make sure that the <code>Image</code> class is loaded at the beginning of the boot process, before everything else and may be considered a clearer solution to you in case you don't want to have definitions of different classes in the same file.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/21042109/4875218" title="short permalink to this answer" class="short-link" id="link-post-21042109">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/21042109/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/21042109/revisions" title="show all edits to this post">edited <span title="2014-02-12 09:21:15Z" class="relativetime">Feb 12 '14 at 9:21</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2014-01-10 10:38:46Z" class="relativetime">Jan 10 '14 at 10:38</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1242778/agis"><div class="gravatar-wrapper-32"><img src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/6c9abd4ec511bc2a86c6b5fdb54d82da" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1242778/agis">Agis</a><br>
+        <span class="reputation-score" title="reputation score 12440" dir="ltr">12.4k</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="21 silver badges"><span class="badge2"></span><span class="badgecount">21</span></span><span title="43 bronze badges"><span class="badge3"></span><span class="badgecount">43</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-21042109" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-31634785" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I do like what you have stated (as I was naive not to think of that :P ), but the only problem with this method is that we will have to do this for every model we want this uploader to handle, IMHO.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/478060/stoic" title="4365 reputation" class="comment-user">Stoic</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#comment31634785_21042109"><span title="2014-01-10 10:48:03Z" class="relativetime-clean">Jan 10 '14 at 10:48</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 2 times"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-21042109" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="21042923"></a>
+<div id="answer-21042923" class="answer" data-answerid="21042923" itemscope="" itemtype="http://schema.org/Answer">
+
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="21042923">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I think you should probably move the constants out of the class, and into the wider namespace in an initializer. Or you could create a method on the image class to access the constant instead. This may or may not alleviate your problems.</p>
+
+<pre class="lang-rb prettyprint prettyprinted"><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">Image</span><span class="pln">
+  THUMB_WIDTH </span><span class="pun">=</span><span class="pln"> </span><span class="lit">220</span><span class="pln">
+
+  </span><span class="kwd">def</span><span class="pln"> </span><span class="kwd">self</span><span class="pun">.</span><span class="pln">thumb_width
+    THUMB_WIDTH
+  </span><span class="kwd">end</span><span class="pln">
+</span><span class="kwd">end</span><span class="pln">
+
+process resize_to_limit</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="typ">Image</span><span class="pun">.</span><span class="pln">thumb_width</span><span class="pun">]</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/21042923/4875218" title="short permalink to this answer" class="short-link" id="link-post-21042923">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/21042923/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-01-10 11:15:36Z" class="relativetime">Jan 10 '14 at 11:15</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/2075407/s-spencer"><div class="gravatar-wrapper-32"><img src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/1e389209455e700c93a96f9627b0e08f" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/2075407/s-spencer">S.Spencer</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">286</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="6 bronze badges"><span class="badge3"></span><span class="badgecount">6</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-21042923" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-21042923" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="21145040"></a>
+<div id="answer-21145040" class="answer" data-answerid="21145040" itemscope="" itemtype="http://schema.org/Answer">
+
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="21145040">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Rails provides a convenient place to store configuration data: <code>Rails.application.config</code>. This will solve your dependency problem and nicely separate the configuration from the logic. I know you said you prefer not to separate them, but I think this is pretty clean (better than creating a constants module).</p>
+
+<p>In config/application.rb:</p>
+
+<pre class="lang-rb prettyprint prettyprinted"><code><span class="pln">config</span><span class="pun">.</span><span class="pln">image_sizes </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  thumb_width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">220</span><span class="pun">,</span><span class="pln">
+  preview_width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">460</span><span class="pun">,</span><span class="pln">
+  max_width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">960</span><span class="pun">,</span><span class="pln">
+</span><span class="pun">}.</span><span class="pln">with_indifferent_access</span></code></pre>
+
+<p>In app/uploaders/image_uploader.rb:</p>
+
+<pre class="lang-rb prettyprint prettyprinted"><code><span class="pln">version </span><span class="pun">:</span><span class="pln">thumb</span><span class="pun">,</span><span class="pln"> from_version</span><span class="pun">:</span><span class="pln"> </span><span class="pun">:</span><span class="pln">preview </span><span class="kwd">do</span><span class="pln">
+  process resize_to_limit</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="typ">Rails</span><span class="pun">.</span><span class="pln">application</span><span class="pun">.</span><span class="pln">config</span><span class="pun">.</span><span class="pln">image_sizes</span><span class="pun">[:</span><span class="pln">thumb_width</span><span class="pun">]]</span><span class="pln">
+</span><span class="kwd">end</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/21145040/4875218" title="short permalink to this answer" class="short-link" id="link-post-21145040">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/21145040/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/21145040/revisions" title="show all edits to this post">edited <span title="2014-01-17 19:01:07Z" class="relativetime">Jan 17 '14 at 19:01</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2014-01-15 18:06:12Z" class="relativetime">Jan 15 '14 at 18:06</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/561019/nick-urban"><div class="gravatar-wrapper-32"><img src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/a6fe758442b4e85798eea859dd671c90" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/561019/nick-urban">Nick Urban</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">2,263</span><span title="9 silver badges"><span class="badge2"></span><span class="badgecount">9</span></span><span title="23 bronze badges"><span class="badge3"></span><span class="badgecount">23</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-21145040" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-21145040" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="21208342"></a>
+<div id="answer-21208342" class="answer" data-answerid="21208342" itemscope="" itemtype="http://schema.org/Answer">
+
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="21208342">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Your <code>ImageUploader</code> class is being autoloaded before <code>THUMB_WIDTH</code> has been defined. Change the definition order:</p>
+
+<pre class="lang-rb prettyprint prettyprinted"><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">Image</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln"> </span><span class="typ">ActiveRecord</span><span class="pun">::</span><span class="typ">Base</span><span class="pln">
+  include </span><span class="typ">Rails</span><span class="pun">.</span><span class="pln">application</span><span class="pun">.</span><span class="pln">routes</span><span class="pun">.</span><span class="pln">url_helpers
+
+  THUMB_WIDTH </span><span class="pun">=</span><span class="pln"> </span><span class="lit">220</span><span class="pln">
+  PREVIEW_WIDTH </span><span class="pun">=</span><span class="pln"> </span><span class="lit">460</span><span class="pln">
+  MAX_WIDTH </span><span class="pun">=</span><span class="pln"> </span><span class="lit">960</span><span class="pln">
+
+  mount_uploader </span><span class="pun">:</span><span class="pln">image</span><span class="pun">,</span><span class="pln"> </span><span class="typ">ImageUploader</span><span class="pln">
+
+</span><span class="kwd">end</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/21208342/4875218" title="short permalink to this answer" class="short-link" id="link-post-21208342">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/21208342/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2014-01-18 18:45:06Z" class="relativetime">Jan 18 '14 at 18:45</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/59631/davogones"><div class="gravatar-wrapper-32"><img src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/101ded4479a81a142f240efef9828201" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/59631/davogones">davogones</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">5,890</span><span title="15 silver badges"><span class="badge2"></span><span class="badgecount">15</span></span><span title="31 bronze badges"><span class="badge3"></span><span class="badgecount">31</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-21208342" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-31968688" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">interpreters! right! lines evaluated one-by-one. And I'm a 8 years-experienced developer (with a PHP background, but it doesn't really matter). Shame, shame, shame on me, how I could not see this in a first place? thanks!</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/485676/nemoden" title="4637 reputation" class="comment-user owner">Nemoden</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#comment31968688_21208342"><span title="2014-01-20 01:53:23Z" class="relativetime-clean">Jan 20 '14 at 1:53</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-21208342" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="21197794"></a>
+<div id="answer-21197794" class="answer" data-answerid="21197794" itemscope="" itemtype="http://schema.org/Answer">
+
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="21197794">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Keeping in mind the fact that evaluation order is very important in dynamic languages, it's best to always structure your code in a fashion that will protect you against issues like this. Consider structuring your code in the following fashion:</p>
+
+<pre class="lang-rb prettyprint prettyprinted"><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">Example</span><span class="pln">
+  extend </span><span class="typ">Extensions</span><span class="pln">
+  include </span><span class="typ">Inclusions</span><span class="pln">
+  CONSTANTS </span><span class="pun">=</span><span class="pln"> </span><span class="str">"Should Consistently Follow"</span><span class="pln">
+
+  attr_accessor </span><span class="pun">:</span><span class="pln">notebook
+  attr_reader </span><span class="pun">:</span><span class="pln">book
+  attr_writer </span><span class="pun">:</span><span class="pln">note
+
+  then_other_available </span><span class="pun">:</span><span class="pln">macro_like_methods
+
+  </span><span class="kwd">def</span><span class="pln"> initialize</span><span class="pun">;</span><span class="pln"> </span><span class="kwd">end</span><span class="pln">
+
+  </span><span class="kwd">def</span><span class="pln"> </span><span class="kwd">self</span><span class="pun">.</span><span class="pln">class_methods</span><span class="pun">;</span><span class="pln"> </span><span class="kwd">end</span><span class="pln">
+
+  </span><span class="kwd">def</span><span class="pln"> instance_methods</span><span class="pun">;</span><span class="pln"> </span><span class="kwd">end</span><span class="pln">
+
+  protected
+    </span><span class="com"># ...</span><span class="pln">
+  private
+    </span><span class="com"># ...</span><span class="pln">
+</span><span class="kwd">end</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/21197794/4875218" title="short permalink to this answer" class="short-link" id="link-post-21197794">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/21197794/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-01-17 23:18:52Z" class="relativetime">Jan 17 '14 at 23:18</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/390897/faraz"><div class="gravatar-wrapper-32"><img src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/bb90a39b77596fcffbab96de88f0ee34" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/390897/faraz">faraz</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">5,821</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="31 silver badges"><span class="badge2"></span><span class="badgecount">31</span></span><span title="58 bronze badges"><span class="badge3"></span><span class="badgecount">58</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-21197794" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-31970028" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">thank you for a boilerplate, it's really useful</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/485676/nemoden" title="4637 reputation" class="comment-user owner">Nemoden</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#comment31970028_21197794"><span title="2014-01-20 03:37:40Z" class="relativetime-clean">Jan 20 '14 at 3:37</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-21197794" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="21042908"></a>
+<div id="answer-21042908" class="answer" data-answerid="21042908" itemscope="" itemtype="http://schema.org/Answer">
+
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="21042908">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I can't be certain about problem roots, but can assume it is related to file loading order. Content of <code>class</code> scope evaluated at the moment of loading file. And name <code>Image::THUMB_WIDTH</code> used before it is ever defined (and file loaded).</p>
+
+<p>But still not sure, because received message is not <code>uninitialized constant Image</code>, but <code>uninitialized constant Image::THUMB_WIDTH</code>. It can related to some project details and structure which is not described in current question context.</p>
+
+<p>Solution using <code>const_get</code> can be named hack (dirty, nasty hack), since you are not sure if it is ever initialized at the loading moment in current situation.</p>
+
+<p>I would say this code has design issues, cause classes share responsibility and require each other at the moment of code evaluation. Maybe you should move this dependency to initialization time, for example - passing expected images parameters to <code>ImageUploader</code> while calling new? Or better to move it completely there from <code>Image</code>, since autogenerated thumb size is barely part of <code>Image</code> abstraction. It depends on <code>Image</code> class purpose, you should clarify it first.</p>
+
+<p>Remember, single object - single responsibility. This way will solve dependency problem in most general and controllable way.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/21042908/4875218" title="short permalink to this answer" class="short-link" id="link-post-21042908">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/21042908/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-01-10 11:14:51Z" class="relativetime">Jan 10 '14 at 11:14</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/494414/meredian"><div class="gravatar-wrapper-32"><img src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/32d22bdb8b02ba5d0863e57ba39cb611" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/494414/meredian">Meredian</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">313</span><span title="3 silver badges"><span class="badge2"></span><span class="badgecount">3</span></span><span title="11 bronze badges"><span class="badge3"></span><span class="badgecount">11</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-21042908" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-21042908" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="21087400"></a>
+<div id="answer-21087400" class="answer" data-answerid="21087400" itemscope="" itemtype="http://schema.org/Answer">
+
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="21087400">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Adding <code>require Image</code> at the top of <code>ImageUploader</code> does not help? </p>
+
+<p>Not sure, because <code>Image</code> needs <code>ImageUploader</code>, so you might have a circular reference there.</p>
+
+<p>So if that does not work, I would extract the image-configuration to another class/module. You say it belongs to the <code>Image</code> but imho it is more application-configuration, right? It specifies how images are shown/stored in this application. If you would show images in another application, it might change.</p>
+
+<p>So, either you add something like <code>app/models/image/configuration.rb</code></p>
+
+<pre class="lang-rb prettyprint prettyprinted"><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">Image</span><span class="pln">
+  </span><span class="kwd">module</span><span class="pln"> </span><span class="typ">Configuration</span><span class="pln">
+    THUMB_WIDTH </span><span class="pun">=</span><span class="pln"> </span><span class="lit">220</span><span class="pln">
+    PREVIEW_WIDTH </span><span class="pun">=</span><span class="pln"> </span><span class="lit">460</span><span class="pln">
+    MAX_WIDTH </span><span class="pun">=</span><span class="pln"> </span><span class="lit">960</span><span class="pln">
+  </span><span class="kwd">end</span><span class="pln">
+</span><span class="kwd">end</span></code></pre>
+
+<p>and in your <code>ImageUploader</code> you can then write</p>
+
+<pre class="lang-rb prettyprint prettyprinted"><code><span class="pln">require </span><span class="str">`image/configuration`</span></code></pre>
+
+<p>and use <code>Image::Configuration::THUMB_WIDTH</code>.</p>
+
+<p>What I generally do with such configuration properties: I put them in a <code>config.yml</code>, which I load in an initializer. It is really easy do to yourself, using something like </p>
+
+<pre class="lang-rb prettyprint prettyprinted"><code><span class="pln">appl_config_file </span><span class="pun">=</span><span class="pln"> </span><span class="str">"#{Rails.root}/config/config.yml"</span><span class="pln">
+raw_config </span><span class="pun">=</span><span class="pln"> </span><span class="typ">File</span><span class="pun">.</span><span class="pln">read</span><span class="pun">(</span><span class="pln">appl_config_file</span><span class="pun">)</span><span class="pln">
+APP_CONFIG </span><span class="pun">=</span><span class="pln"> </span><span class="typ">HashWithIndifferentAccess</span><span class="pun">.</span><span class="pln">new</span><span class="pun">(</span><span class="pln">YAML</span><span class="pun">.</span><span class="pln">load</span><span class="pun">(</span><span class="pln">raw_config</span><span class="pun">)[</span><span class="str">"#{Rails.env}"</span><span class="pun">])</span></code></pre>
+
+<p>or use a gem like <a href="https://github.com/railsjedi/rails_config" rel="nofollow">rails_config</a>.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/21087400/4875218" title="short permalink to this answer" class="short-link" id="link-post-21087400">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/21087400/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2014-01-13 09:12:51Z" class="relativetime">Jan 13 '14 at 9:12</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/216513/nathanvda"><div class="gravatar-wrapper-32"><img src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/30a45c64b2ef288f7ec098c5fb353a22" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/216513/nathanvda">nathanvda</a><br>
+        <span class="reputation-score" title="reputation score 31097" dir="ltr">31.1k</span><span title="7 gold badges"><span class="badge1"></span><span class="badgecount">7</span></span><span title="68 silver badges"><span class="badge2"></span><span class="badgecount">68</span></span><span title="102 bronze badges"><span class="badge3"></span><span class="badgecount">102</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-21087400" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-31723489" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Can I exploit <code>Rails::Application::Configuration</code> somehow?</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/485676/nemoden" title="4637 reputation" class="comment-user owner">Nemoden</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#comment31723489_21087400"><span title="2014-01-13 11:42:58Z" class="relativetime-clean">Jan 13 '14 at 11:42</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-31823741" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Nemoden Yes, see my answer.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/561019/nick-urban" title="2263 reputation" class="comment-user">Nick Urban</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#comment31823741_21087400"><span title="2014-01-15 18:07:19Z" class="relativetime-clean">Jan 15 '14 at 18:07</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-21087400" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="21041735"></a>
+<div id="answer-21041735" class="answer" data-answerid="21041735" itemscope="" itemtype="http://schema.org/Answer">
+
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="21041735">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Looking at the source for <a href="http://railscasts.com/episodes/253-carrierwave-file-uploads" rel="nofollow">this RailsCasts Episode</a>, I think you should use:</p>
+
+<pre class="lang-rb prettyprint prettyprinted"><code><span class="pln">process resize_to_limit</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">model</span><span class="pun">.</span><span class="kwd">class</span><span class="pun">.</span><span class="pln">const_get</span><span class="pun">(</span><span class="str">"THUMB_WIDTH"</span><span class="pun">)]</span></code></pre>
+
+<p>The benefit with this method is that you can simply declare a <code>THUMB_WIDTH</code> constant inside any other model, and then simply, use this uploader class to handle that model, as well :)</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/21041735/4875218" title="short permalink to this answer" class="short-link" id="link-post-21041735">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/21041735/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/21041735/revisions" title="show all edits to this post">edited <span title="2014-01-10 10:55:15Z" class="relativetime">Jan 10 '14 at 10:55</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-01-10 10:22:05Z" class="relativetime">Jan 10 '14 at 10:22</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/478060/stoic"><div class="gravatar-wrapper-32"><img src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/5b63ddb13e43fd66f8a3030e3dd233f8" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/478060/stoic">Stoic</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">4,365</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="22 silver badges"><span class="badge2"></span><span class="badgecount">22</span></span><span title="48 bronze badges"><span class="badge3"></span><span class="badgecount">48</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-21041735" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-31635259" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">it says: <code>undefined local variable or method 'model'</code></span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/485676/nemoden" title="4637 reputation" class="comment-user owner">Nemoden</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#comment31635259_21041735"><span title="2014-01-10 11:00:48Z" class="relativetime-clean">Jan 10 '14 at 11:00</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-21041735" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+									<a name="new-answer"></a>
+						<form id="post-form" action="http://stackoverflow.com/questions/21041653/answer/submit" method="post" class="post-form">
+						    <input type="hidden" id="post-id" value="21041653">
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false">
+                            <input type="hidden" name="referrer" value="https://www.google.be/">
+							<h2 class="space">Your Answer</h2>
+
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+            // Have to fire editor after snippets, if snippets enabled
+            if (StackExchange.options.snippets.enabled) {
+                StackExchange.using("snippets", function() {
+                    createEditor();
+                });
+            }
+            else {
+                createEditor();
+            }
+        });
+
+        function createEditor() {
+            prepareEditor({
+                heartbeatType: 'answer',
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: false,
+                    discardSelector: ".discard-answer"
+                ,immediatelyShowMarkdownHelp:true
+                });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li class="wmd-button" id="wmd-bold-button" title="Strong &lt;strong&gt; Ctrl+B" style="left: 0px;"><span style="background-position: 0px 0px;"></span></li><li class="wmd-button" id="wmd-italic-button" title="Emphasis &lt;em&gt; Ctrl+I" style="left: 25px;"><span style="background-position: -20px 0px;"></span></li><li class="wmd-spacer wmd-spacer1" id="wmd-spacer1"></li><li class="wmd-button" id="wmd-link-button" title="Hyperlink &lt;a&gt; Ctrl+L" style="left: 75px;"><span style="background-position: -40px 0px;"></span></li><li class="wmd-button" id="wmd-quote-button" title="Blockquote &lt;blockquote&gt; Ctrl+Q" style="left: 100px;"><span style="background-position: -60px 0px;"></span></li><li class="wmd-button" id="wmd-code-button" title="Code Sample &lt;pre&gt;&lt;code&gt; Ctrl+K" style="left: 125px;"><span style="background-position: -80px 0px;"></span></li><li class="wmd-button" id="wmd-image-button" title="Image &lt;img&gt; Ctrl+G" style="left: 150px;"><span style="background-position: -100px 0px;"></span></li><li class="wmd-button wmd-snippet-button" style="left:175px" id="wmd-snippet-button" title="JavaScript/HTML/CSS snippet Ctrl-M"><span style="background-image: url(http://stackoverflow.com/content/balsamiq/wmd-mockup-button.png?v=4);"></span></li><li class="wmd-spacer wmd-spacer2" id="wmd-spacer2" style="left: 220px;"></li><li class="wmd-button" id="wmd-olist-button" title="Numbered List &lt;ol&gt; Ctrl+O" style="left: 225px;"><span style="background-position: -120px 0px;"></span></li><li class="wmd-button" id="wmd-ulist-button" title="Bulleted List &lt;ul&gt; Ctrl+U" style="left: 250px;"><span style="background-position: -140px 0px;"></span></li><li class="wmd-button" id="wmd-heading-button" title="Heading &lt;h1&gt;/&lt;h2&gt; Ctrl+H" style="left: 275px;"><span style="background-position: -160px 0px;"></span></li><li class="wmd-button" id="wmd-hr-button" title="Horizontal Rule &lt;hr&gt; Ctrl+R" style="left: 300px;"><span style="background-position: -180px 0px;"></span></li><li class="wmd-spacer wmd-spacer3" id="wmd-spacer3" style="left: 346px;"></li><li class="wmd-button" id="wmd-undo-button" title="Undo - Ctrl+Z" style="left: 350px;"><span style="background-position: -200px -20px;"></span></li><li class="wmd-button" id="wmd-redo-button" title="Redo - Ctrl+Shift+Z" style="left: 375px;"><span style="background-position: -220px -20px;"></span></li><li class="wmd-button wmd-help-button active-help" id="wmd-help-button" title="Markdown Editing Help" style="right: 0px;"><span style="background-position: -240px 0px;"></span></li><div id="mdhelp" class="mdhelp" style="right: -13px; width: 660px; top: 41px;">
+    <ul id="mdhelp-tabs" class="mdhelp-tabs">
+        <li data-tab="mdhelp-links" data-buttons="link">Links</li>
+        <li data-tab="mdhelp-images" data-buttons="image">Images</li>
+        <li data-tab="mdhelp-styles" data-buttons="bold,italic,heading">Styling/Headers</li>
+        <li data-tab="mdhelp-lists" data-buttons="olist,ulist">Lists</li>
+        <li data-tab="mdhelp-blockquotes" data-buttons="quote">Blockquotes</li>
+        <li data-tab="mdhelp-code" data-buttons="code">Code</li>
+        <li data-tab="mdhelp-html"> HTML </li>
+        <li style="float:right"><a href="http://stackoverflow.com/editing-help" target="_blank">advanced help »</a></li>
+    </ul>
+    
+    <div class="mdhelp-tab" id="mdhelp-links">
+            <p>
+                In most cases, a plain URL will be recognized as such and automatically linked:
+            </p>
+            <pre>Visit http://area51.stackexchange.com/ regularly!
+Use angle brackets to force linking: Have you seen &lt;http://superuser.com&gt;?
+</pre>
+            <p>
+                To create fancier links, use Markdown:
+            </p>
+                <pre>Here's [a link](http://www.example.com/)! And a reference-style link to [a panda][1].
+References don't have to be [numbers][question].
+
+ [1]: http://notfound.stackexchange.com/
+ [question]: http://english.stackexchange.com/questions/11481
+</pre>
+                <p>You can add tooltips to links:</p>
+<pre>Click [here](http://diy.stackexchange.com<span class="spaces">&nbsp;</span>"this text appears when you mouse over")!
+This works with [reference links][blog] as well.
+
+ [blog]: http://blog.stackoverflow.com/<span class="spaces">&nbsp;</span>"click here for updates"
+</pre>
+    </div>
+
+    <div class="mdhelp-tab" id="mdhelp-images">
+        <p>Images are exactly like links, but they have an exclamation point in front of them:</p>
+        <pre>![a busy cat](http://sstatic.net/stackoverflow/img/error-lolcat-problemz.jpg)
+![two muppets][1]
+
+ [1]: http://i.imgur.com/I5DFV.jpg "tooltip"
+</pre>
+        <p>
+            The word in square brackets is the alt text, which gets displayed if the browser
+ can't show the image. Be sure to include meaningful alt text for screen-reading
+ software.
+        </p>
+   
+    </div>
+    <div class="mdhelp-tab" id="mdhelp-styles">
+        <div class="col1">
+            <p>Be sure to use text styling sparingly; only where it helps readability.</p>
+                <pre>*This is italicized*, and so
+is _this_.
+
+**This is bold**, just like __this__.
+
+You can ***combine*** them
+if you ___really have to___.
+</pre>
+        
+        </div>
+        <div class="col2">
+            <p>
+                To break your text into sections, you can use headers:
+            </p>
+                <pre>A Large Header
+==============
+
+Smaller Subheader
+-----------------
+</pre>
+            <p>
+                Use hash marks if you need several levels of headers:</p>
+    <pre># Header 1 #
+## Header 2 ##
+### Header 3 ###
+</pre>
+
+            
+        </div>
+
+    </div>
+    <div class="mdhelp-tab" id="mdhelp-lists">
+        <p>Both bulleted and numbered lists are possible:</p>
+        <div class="col1">
+<pre>-<span class="spaces">&nbsp;</span>Use a minus sign for a bullet
++<span class="spaces">&nbsp;</span>Or plus sign
+*<span class="spaces">&nbsp;</span>Or an asterisk
+
+1.<span class="spaces">&nbsp;</span>Numbered lists are easy
+2.<span class="spaces">&nbsp;</span>Markdown keeps track of
+ the numbers for you
+7.<span class="spaces">&nbsp;</span>So this will be item 3.
+</pre>
+        </div>
+        <div class="col2">
+<pre>1.<span class="spaces">&nbsp;</span>Lists in a list item:
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="spaces">&nbsp;</span>Indented four spaces.
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>*<span class="spaces">&nbsp;</span>indented eight spaces.
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="spaces">&nbsp;</span>Four spaces again.
+2.<span class="spaces">&nbsp;&nbsp;</span>You can have multiple
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>paragraphs in a list items.
+<span class="spaces">&nbsp;</span>
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>Just be sure to indent.
+</pre>        
+        </div>
+    </div>
+
+    <div class="mdhelp-tab" id="mdhelp-blockquotes">
+        <div class="col1">
+            <pre>&gt; Create a blockquote by
+&gt; prepending “&gt;” to each line.
+&gt;
+&gt; Other formatting also works here, e.g.
+&gt;
+&gt; 1. Lists or
+&gt; 2. Headings:
+&gt;
+&gt; ## Quoted Heading ##
+</pre>
+        </div>
+        <div class="col2">
+                <p>
+                    You can even put blockquotes in blockquotes:
+                </p>
+                <pre>&gt; A standard blockquote is indented
+&gt; &gt; A nested blockquote is indented more
+&gt; &gt; &gt; &gt; You can nest to any depth.
+</pre>
+        </div>
+    </div>
+
+    <div class="mdhelp-tab" id="mdhelp-code">
+        <p>
+            To create code blocks or other preformatted text, indent by four spaces:
+        </p>
+        <pre><span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>This will be displayed in a monospaced font. The first four spaces
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>will be stripped off, but all other whitespace will be preserved.
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>Markdown and HTML are turned off in code blocks:
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>&lt;i&gt;This is not italic&lt;/i&gt;, and [this is not a link](http://example.com)
+</pre>
+        <p>
+            To create not a block, but an inline code span, use backticks:
+        </p>
+        <pre>The `$` character is just a shortcut for `window.jQuery`.
+</pre>
+        <p>
+            If you want to have a preformatted block within a list, indent by eight spaces:
+        </p>
+        <pre>1. This is normal text.
+2. So is this, but now follows a code block:
+<span class="spaces">&nbsp;</span>
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Skip a line and indent eight spaces.
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>That's four spaces for the list
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>and four to trigger the code block.
+</pre>
+    </div>
+
+    <div class="mdhelp-tab" id="mdhelp-html">
+        <p>
+            If you need to do something that Markdown can't handle, use HTML. Note that <a href="http://meta.stackexchange.com/questions/1777/what-html-tags-are-allowed" target="_blank">we only support a very strict subset of HTML!</a>
+        </p>
+        <pre>Strikethrough humor is &lt;strike&gt;funny&lt;/strike&gt;.
+</pre>
+        <p>
+            Markdown is smart enough not to mangle your span-level HTML:
+        </p>
+        <pre>&lt;b&gt;Markdown works *fine* in here.&lt;/b&gt;
+</pre>
+        <p>
+            Block-level HTML elements have a few restrictions:
+        </p>
+        <ol>
+            <li>They must be separated from surrounding text by blank lines.</li>
+            <li>The begin and end tags of the outermost block element must not be indented.</li>
+            <li>Markdown can't be used within HTML blocks.</li>
+        </ol>
+        <br>
+        <pre>&lt;pre&gt;
+ You can &lt;em&gt;not&lt;/em&gt; use Markdown in here.
+&lt;/pre&gt;
+</pre>
+    </div>
+
+    <div class="cbt"></div>
+</div></ul></div>
+            <div style="clear: both; height: 27px;"></div><textarea id="wmd-input" class="wmd-input processed" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        <div class="grippie" style="margin-right: 0px;"></div></div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="ecca936fe8e0511cbaa437720c629244">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant#" class="discard-answer dno">discard</a>
+								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="http://stackoverflow.com/questions/tagged/ruby-on-rails" class="post-tag" title="show questions tagged &#39;ruby-on-rails&#39;" rel="tag">ruby-on-rails</a> <a href="http://stackoverflow.com/questions/tagged/ruby" class="post-tag" title="show questions tagged &#39;ruby&#39;" rel="tag">ruby</a> <a href="http://stackoverflow.com/questions/tagged/carrierwave" class="post-tag" title="show questions tagged &#39;carrierwave&#39;" rel="tag">carrierwave</a>  or <a href="http://stackoverflow.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+
+
+
+<script>
+    window.showNewUser = false;
+
+</script>
+
+<div class="module newuser newuser-greeting" id="newuser-box" style="display:none;">
+    <h4>Hello World!</h4>
+    <div>
+        <p>This is a collaboratively edited question and answer site for <b>professional and enthusiast programmers</b>. It's 100% free.</p><p>Got a question about the site itself? <a href="http://meta.stackoverflow.com/">meta</a> is the place to talk about things like what questions are appropriate, what tags we should use, etc.</p>
+        <p class="ar">
+                <a href="http://stackoverflow.com/tour?mnu=1">about »</a>&nbsp;&nbsp;&nbsp;
+            <a href="http://stackoverflow.com/help?mnu=1">help »</a>
+                &nbsp; <a href="http://meta.stackoverflow.com/">meta »</a>
+        </p>
+    </div>
+</div>
+    <script>
+    if (showNewUser) {
+        document.getElementById('newuser-box').style.display = '';
+    }
+    </script>						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2014-01-10 10:19:13Z"><b>1 year ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>7829 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="http://stackoverflow.com/questions/21041653/ruby-on-rails-uninitialized-constant?lastactivity" class="lastactivity-link" title="2014-12-11 04:39:01Z">8 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Hot Meta Posts
+                </div>
+                <hr>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <span title="Vote score (upvotes - downvotes)">22</span>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackoverflow.com/questions/302167/streaming-stack-overflow?cb=1" class="question-hyperlink">Streaming Stack Overflow</a>
+                </div>
+                <br class="cbt">
+            </div>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <span title="Vote score (upvotes - downvotes)">10</span>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackoverflow.com/questions/302160/comment-upvotes-are-lost-if-cast-from-the-low-quality-posts-queue?cb=1" class="question-hyperlink">Comment upvotes are lost if cast from the Low Quality Posts queue</a>
+                </div>
+                <br class="cbt">
+            </div>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <span title="Vote score (upvotes - downvotes)">52</span>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackoverflow.com/questions/302081/how-to-see-the-questions-that-gave-you-a-unsung-hero-badge?cb=1" class="question-hyperlink">How to see the questions that gave you a Unsung Hero badge?</a>
+                </div>
+                <br class="cbt">
+            </div>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <span title="Vote score (upvotes - downvotes)">19</span>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackoverflow.com/questions/302084/are-questions-that-ask-why-a-certain-snippet-of-code-doesnt-work-in-a-browser-a?cb=1" class="question-hyperlink">Are questions that ask why a certain snippet of code doesn't work in a browse…</a>
+                </div>
+                <br class="cbt">
+            </div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk469968177",[17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk469968177"><div id="careersadsdoublehigh" style="display:none;"></div><img height="0" width="0" border="0" style="position: absolute; display: none !important; visibility: hidden !important; opacity: 0 !important; background-position: 0px 0px;" src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/i(2).gif"></div>
+        <div id="hireme" class=" orange looking tagged"><a href="http://careers.stackoverflow.com/jobs" target="_blank" data-hf="h" class="top"> <span>Looking for a job?</span></a><ul class="jobs"><li><a data-cid="179393" href="http://careers.stackoverflow.com/jobs/93400/full-stack-developer-at-snappet-connected-snappet" target="_blank" title="Full Stack Developer at Snappet Connected Learning in Utrecht Centre at Snappet. Click to learn more.">Full Stack Developer at Snappet Connected Learning in Utrecht Centre<br><div class="company">Snappet</div><div class="location" title="Utrecht, Netherlands / relocation">Utrecht, Netherlands / relocation</div><span class="post-tag">jquery</span><span class="post-tag">javascript</span></a></li><li><a data-cid="179006" href="http://careers.stackoverflow.com/jobs/93004/lead-developer-computest" target="_blank" title="(Lead) Developer at Computest. Click to learn more.">(Lead) Developer<br><div class="company">Computest</div><div class="location" title="Zoetermeer, Nederland">Zoetermeer, Nederland</div><span class="post-tag">javascript</span><span class="post-tag">php</span></a></li><li><a data-cid="179149" href="http://careers.stackoverflow.com/jobs/93154/ing%C3%A9nieur-d%C3%A9veloppement-net-h-f-archimed" target="_blank" title="Ingénieur développement .NET (h/f) at Archimed. Click to learn more.">Ingénieur développement .NET (h/f)<br><div class="company">Archimed</div><div class="location" title="Lille, France">Lille, France</div><span class="post-tag">.net</span><span class="post-tag">c#</span></a></li><li><a data-cid="179025" href="http://careers.stackoverflow.com/jobs/93023/passionate-code-monkey-topdesk" target="_blank" title="Passionate Code Monkey at TOPdesk. Click to learn more.">Passionate Code Monkey<br><div class="company">TOPdesk</div><div class="location" title="Delft, Netherlands">Delft, Netherlands</div><span class="post-tag">javascript</span><span class="post-tag">java</span></a></li></ul><img class="impression" src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/i" style="display:none;"></div>
+			<div style="margin-bottom: 10px;">
+        
+
+<style type="text/css">
+#newsletter-ad {
+    width: 190px;
+    height: 250px;
+    overflow: hidden;
+    background: url('//cdn.sstatic.net/stackoverflow/img/newsletter-ad.png');
+    padding: 0 15px 0 15px;
+}
+#newsletter-ad-header {
+    margin-top: 60px;
+}
+#newsletter-ad ul {
+    margin: 1em 0 1em 1.5em;
+}
+#newsletter-ad ul li {
+    margin-bottom: 5px;
+}
+#newsletter-signup-container {
+    text-align: center;
+}
+#newsletter-preview-container {
+    margin-top: 10px;
+    text-align: center;
+}
+#newsletter-email-input {
+    width: 200px;
+}
+</style>
+
+<script>
+    StackExchange.ready(function () {
+        StackExchange.newsletterAd.init();
+    });
+</script>
+
+<div id="newsletter-ad">
+    <p id="newsletter-ad-header">Get the <b>weekly newsletter!</b></p>
+    <ul>
+        <li>Top questions and answers</li>
+        <li>Important announcements</li>
+        <li>Unanswered questions</li>
+    </ul>
+    <div id="newsletter-signup-container"><input id="newsletter-signup" type="button" value="Sign up for the newsletter"></div>
+    <p id="newsletter-preview-container">see an <a href="http://stackexchange.com/newsletters/newsletter?site=stackoverflow.com" id="newsletter-preview">example newsletter</a></p>
+    <div class="dno">
+        
+<p class="privacy-policy-agreement">
+By subscribing, you agree to the <a href="http://stackexchange.com/legal/privacy-policy" target="_blank">privacy policy</a> and <a href="http://stackexchange.com/legal/terms-of-service" target="_blank">terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1">
+    </div>
+</div>
+
+    </div>  
+    
+            
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/6085610?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted large">185
+    </div>
+</a><a href="http://stackoverflow.com/questions/6085610/ruby-on-rails-and-rake-problems-uninitialized-constant-rakedsl?rq=1" class="question-hyperlink">Ruby on Rails and Rake problems: uninitialized constant Rake::DSL</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/6601761?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">16
+    </div>
+</a><a href="http://stackoverflow.com/questions/6601761/rails-carrierwave-uninitialized-constant-error?rq=1" class="question-hyperlink">Rails: carrierwave uninitialized constant error</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/10369003?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">2
+    </div>
+</a><a href="http://stackoverflow.com/questions/10369003/uninitialized-constant-imageuploadercarrierwavedirect?rq=1" class="question-hyperlink">uninitialized constant ImageUploader::CarrierWaveDirect</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/17364892?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="http://stackoverflow.com/questions/17364892/uninitialized-constant-carrierwave-on-deploy-of-rails-app-to-server-with-capis?rq=1" class="question-hyperlink">“uninitialized constant CarrierWave” on deploy of Rails app to server with Capistrano</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/18816403?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/18816403/ruby-on-rails-uninitialized-constant-admincontroller?rq=1" class="question-hyperlink">Ruby on Rails: uninitialized constant AdminController</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/19888390?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/19888390/uninitialized-constant-users-ruby-on-rails?rq=1" class="question-hyperlink">uninitialized constant Users ruby on rails</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/23826643?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/23826643/ruby-on-rails-uninitialized-constant-error?rq=1" class="question-hyperlink">Ruby on Rails - Uninitialized Constant Error</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/24090031?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/24090031/uninitialized-constant-totally-lost-with-this-in-rails?rq=1" class="question-hyperlink">uninitialized constant - totally lost with this in Rails</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/26112057?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">3
+    </div>
+</a><a href="http://stackoverflow.com/questions/26112057/uninitialized-constant-carrierwaveminimagic?rq=1" class="question-hyperlink">uninitialized constant CarrierWave::MiniMagic</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/29869474?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="http://stackoverflow.com/questions/29869474/ruby-on-rails-uninitialized-constant-error?rq=1" class="question-hyperlink">Ruby on Rails “uninitialized constant” error</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="http://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="http://mathematica.stackexchange.com/questions/91353/fitting-one-set-of-data-with-two-function" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Fitting one set of data with two function
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/19889/look-who-just-showed-up" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Look who just showed up!
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/31931954/string-split-with-conditions-in-r" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    String split with conditions in R
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div><a href="http://money.stackexchange.com/questions/51755/how-can-i-lower-my-taxable-income" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:93 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I lower my taxable income?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/199632/why-didnt-the-big-bang-create-heavy-elements" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why didn't the Big Bang create heavy elements?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="http://askubuntu.com/questions/660102/which-command-should-i-use-to-open-an-mp3-file-say-abcd-mp3" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Which command should i use to open an mp3 file say "abcd.mp3"
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/63911/why-does-the-spellchecker-think-this-sentence-is-wrong" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why does the spellchecker think this sentence is wrong?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1392997/problem-with-integration-using-substitution" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Problem with Integration using substitution
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/265962/whats-the-word-for-a-person-who-uses-resources-to-the-maximum" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    what's the word for a person who uses resources to the maximum?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-pm" title="Project Management Stack Exchange"></div><a href="http://pm.stackexchange.com/questions/15843/how-do-i-convince-the-development-team-to-export-data-to-excel" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:208 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do I convince the development team to export data to Excel?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-japanese" title="Japanese Language Stack Exchange"></div><a href="http://japanese.stackexchange.com/questions/27315/japanese-counter-for-exercise-repetitions" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:257 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Japanese counter for exercise repetitions
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/19837/what-thing-am-i" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What thing am I?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/265938/what-does-it-s-always-a-pig-in-a-poke-so-why-not-a-pig-who-pokes-mean" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What does “It’s always a pig in a poke. So why not a pig who pokes?”mean?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-ux" title="User Experience Stack Exchange"></div><a href="http://ux.stackexchange.com/questions/82705/why-is-sugar-not-in-a-shaker" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:102 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why is sugar not in a shaker?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/19857/what-is-an-odd-word%e2%84%a2" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is an Odd Word™?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/31939218/are-these-lines-of-javascript-code-equivalent-or-not" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Are these lines of javascript code equivalent or not?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/96513/can-an-eavesdropper-detect-the-use-of-a-tls-client-side-certificate" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can an eavesdropper detect the use of a TLS client-side certificate?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-salesforce" title="Salesforce Stack Exchange"></div><a href="http://salesforce.stackexchange.com/questions/87709/convert-primitive-datetime-to-datetime-class" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:459 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Convert Primitive dateTime to dateTime class
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="http://movies.stackexchange.com/questions/38690/movie-about-three-adventurous-friends-in-a-place-with-conflict" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Movie about three adventurous friends in a place with conflict
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-portuguese" title="Portuguese Language Stack Exchange"></div><a href="http://portuguese.stackexchange.com/questions/809/qual-%c3%a9-a-palavra-mais-educada-seio-peito-mama-ou-outra" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:625 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Qual é a palavra mais educada? Seio, peito, mama ou outra?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/96505/can-fbi-or-government-agencies-still-get-hold-of-my-files-if-i-store-them-on-goo" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can FBI or government agencies still get hold of my files if I store them on Google Docs?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-apple" title="Ask Different"></div><a href="http://apple.stackexchange.com/questions/199601/ipad-malware-warning" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:118 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    iPad malware warning
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-webapps" title="Web Applications Stack Exchange"></div><a href="http://webapps.stackexchange.com/questions/82278/how-can-i-find-duplicates-in-a-column-using-formulas" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:34 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I find duplicates in a column, using formulas?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/19870/nine-gangsters-and-a-gold-bar" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Nine gangsters and a gold bar
+                </a>
+
+            </li>
+    </ul>
+
+        
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="http://stackoverflow.com/feeds/question/21041653" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/21041653/ivc/2ee5');});
+</script>
+<noscript>
+    &lt;div&gt;&lt;img src="/posts/21041653/ivc/2ee5" class="dno" alt="" width="0" height="0"&gt;&lt;/div&gt;
+</noscript><div style="display:none" id="prettify-lang">lang-rb</div></div>
+
+    <script>
+        $('#wmd-input').one("keypress", function() {
+            $.ajax({
+                url: '/accounts/email-settings-form',
+                cache: false,
+                success: function(data) {
+                    $('#submit-button').parent().prepend(data);
+                }
+            });
+        });
+
+    </script>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="http://stackoverflow.com/tour">tour</a>
+                    <a href="http://stackoverflow.com/help">help</a>
+                    <a href="http://blog.stackoverflow.com/?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com/">chat</a>
+                    <a href="http://data.stackexchange.com/">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick="StackExchange.switchMobile(&quot;on&quot;)">mobile</a>
+                    <b><a href="http://stackoverflow.com/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://programmers.stackexchange.com/" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="http://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="http://expressionengine.stackexchange.com/" title="administrators, end users, developers and designers for ExpressionEngine® CMS">ExpressionEngine® Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="http://movies.stackexchange.com/" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="http://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="http://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="http://chemistry.stackexchange.com/" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="http://biology.stackexchange.com/" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo © 2015 Stack Exchange Inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2015.8.11.685
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        &lt;div id="noscript-warning"&gt;Stack Overflow works best with JavaScript enabled&lt;img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"&gt;&lt;/div&gt;
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () { ados_setKeywords('ruby-on-rails,ruby,carrierwave,x-user-registered');; ados_load(); });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');        
+        ga('set', 'dimension1', '6270946');         
+        ga('set', 'dimension2', '|ruby-on-rails|ruby|carrierwave|');         
+        ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>            
+    
+<script type="text/javascript" src="./Ruby on Rails. Uninitialized constant - Stack Overflow_files/p"></script></body></html>

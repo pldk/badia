@@ -1,7 +1,7 @@
 class GirlsController < ApplicationController
   before_action :set_girl, only: [:show, :edit, :update, :destroy]
   def index
-    @girls = Girls.all
+    @girls = Girl.all
   end
 
   def show
@@ -12,19 +12,23 @@ class GirlsController < ApplicationController
   end
 
   def create
-    @girl = Gril.new(params[:girls])
-    @girl.save
-
-    redirect_to girl_path(@girl)
+    @girl = Girl.new(girl_params)
+    if @girl.save
+      redirect_to girl_path(@girl)
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
-    @girl.update(params[:girl])
-
-    redirect_to girl_path(@girl)
+    if @girl.update(girl_params)
+      redirect_to girl_path(@girl)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -40,6 +44,6 @@ class GirlsController < ApplicationController
   end
 
   def girl_params
-    params.require(:girl).permit(:name, :address)
+    params.require(:girl).permit(:name, :city, :age. :phone_number)
   end
 end

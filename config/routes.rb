@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :girls
+  resources :girls do
+    resources :ads
+  end
 
   get 'pages/contact'
 
