@@ -13,6 +13,7 @@ class CreateGirls < ActiveRecord::Migration
       t.string :sexual_preference
       t.integer :phone_number
       t.string :website
+      t. :image
 
       t.timestamps null: false
     end
