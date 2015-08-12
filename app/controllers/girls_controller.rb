@@ -1,4 +1,5 @@
 class GirlsController < ApplicationController
+  layout "blog"
   before_action :set_girl, only: [:show, :edit, :update, :destroy]
   def index
     @girls = Girl.all
