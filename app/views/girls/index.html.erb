@@ -1,3 +1,17 @@
+<div class="container">
+  <div class="row">
+    <% @girls.each do |r| %>
+      <%= render "girl", girl: r %>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to girl_path(@girl), {class: "btn btn-primary"} do %>
+  <%= @girl.name %>
+  <span class="label label-primary">NEW</span>
+<% end %>
+
+
 <!-- Title -->
         <div class="row">
             <div class="col-lg-12">
